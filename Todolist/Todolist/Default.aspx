@@ -39,7 +39,7 @@
                     <%# Eval("Title") %>
                 </td>
                 <td>
-                    <%# Eval("DueDate").ToString() %>
+                    <%# ((DateTime)Eval("DueDate")).ToString("dd-MMM-yyyy") %>
                 </td>
                 <td>
                     <a href="/Detail.aspx?id=<%# Eval("ID") %>">Edit</a> | 
