@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB_9A9CCA_todolistModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DB_9A9CCA_todolistModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblTask">
           <Key>
             <PropertyRef Name="ID" />
@@ -12,12 +12,12 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="350" />
           <Property Name="RecordStatus" Type="int" />
+          <Property Name="DueDate" Type="datetime" />
         </EntityType>
         <EntityContainer Name="DB_9A9CCA_todolistModelStoreContainer">
           <EntitySet Name="tblTask" EntityType="Self.tblTask" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_9A9CCA_todolistModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -28,6 +28,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
           <Property Name="RecordStatus" Type="Int32" />
+          <Property Name="DueDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tblTasks" EntityType="Self.tblTask" />
@@ -41,6 +42,7 @@
           <EntitySetMapping Name="tblTasks">
             <EntityTypeMapping TypeName="DB_9A9CCA_todolistModel.tblTask">
               <MappingFragment StoreEntitySet="tblTask">
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="RecordStatus" ColumnName="RecordStatus" />

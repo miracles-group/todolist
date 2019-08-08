@@ -22,6 +22,15 @@ namespace Todolist {
         protected global::System.Web.UI.WebControls.TextBox txtTaskName;
         
         /// <summary>
+        /// txtDueDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDueDate;
+        
+        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>

@@ -17,5 +17,6 @@ namespace Todolist
         public int ID { get; set; }
         public string Title { get; set; }
         public Nullable<int> RecordStatus { get; set; }
+        public Nullable<System.DateTime> DueDate { get; set; }
     }
 }

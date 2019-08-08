@@ -27,6 +27,7 @@ namespace Todolist
                 {
                     var item = db.tblTasks.FirstOrDefault(o => o.ID == id);
                     txtTaskName.Text = item.Title;
+                    txtDueDate.Text = item.DueDate != null ? item.DueDate.Value.ToString("yyyy-MM-dd") : string.Empty;
                 }
                 else
                 {
@@ -39,12 +40,19 @@ namespace Todolist
         {
             using (var db = new Entities())
             {
+                DateTime duedate;
+                if(!DateTime.TryParse(txtDueDate.Text, out duedate))
+                {
+                    lbMessage.Text = "Due Date must used format MM/dd/yyyy ";
+                    return;
+                }
                 var idparam = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : string.Empty;
                 int id;
                 if (int.TryParse(idparam, out id))
                 {
                     var item = db.tblTasks.FirstOrDefault(o => o.ID == id);
                     item.Title = txtTaskName.Text;
+                    item.DueDate = duedate;
                     db.SaveChanges();
                     Response.Redirect("/");
                 }

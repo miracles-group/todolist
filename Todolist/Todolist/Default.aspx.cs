@@ -31,9 +31,16 @@ namespace Todolist
         {
             using (var db = new Entities())
             {
+                DateTime duedate;
+                if (!DateTime.TryParse(txtDueDate.Text, out duedate))
+                {
+                    lbMessage.Text = "Due Date must used format MM/dd/yyyy ";
+                    return;
+                }
                 db.tblTasks.Add(new tblTask
                 {
                     Title = txtTaskName.Text,
+                    DueDate = duedate,
                     RecordStatus = Const.Active
                 });
                 db.SaveChanges();

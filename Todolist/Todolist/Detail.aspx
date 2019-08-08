@@ -3,8 +3,12 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h1>Edit Todo list</h1>
     <fieldset>
-        Task name:
+        <div>Task name:</div>
         <asp:TextBox ID="txtTaskName" runat="server"></asp:TextBox>
+        <br /><br />
+        <div>Due Date:</div>
+        <asp:TextBox ID="txtDueDate" TextMode="Date" runat="server"></asp:TextBox>
+        <br /><br />
         <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
     </fieldset>
     <br />
