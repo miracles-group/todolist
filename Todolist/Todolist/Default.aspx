@@ -7,9 +7,10 @@
         <asp:TextBox ID="txtTaskName" runat="server"></asp:TextBox>
         <asp:Button ID="btnCreate" runat="server" Text="Create" OnClick="btnCreate_Click" />
     </fieldset>
-    <asp:Repeater ID="rptList" runat="server">
+    <br />
+    <asp:Repeater ID="rptList" runat="server" OnItemCommand="rptList_ItemCommand">
         <HeaderTemplate>
-            <table>
+            <table class="table">
                 <tr>
                     <td>
                         <strong>#</strong>
@@ -17,16 +18,21 @@
                     <td>
                         <strong>Name</strong>
                     </td>
+                    <td></td>
                 </tr>
         </HeaderTemplate>
         <ItemTemplate>
             <tr>
-                
+
                 <td>
                     <%# Container.ItemIndex + 1 %>
                 </td>
                 <td>
                     <%# Eval("Title") %>
+                </td>
+                <td>
+                    <asp:LinkButton ID="lbtnDelete" CommandName="Delete" OnClientClick="javascript:if(!confirm('Delete this information? this will delete permanently'))return false;" CommandArgument='<%#Eval("ID") %>' runat="server">Delete</asp:LinkButton>
+
                 </td>
             </tr>
         </ItemTemplate>
@@ -34,4 +40,5 @@
             </table>
         </FooterTemplate>
     </asp:Repeater>
+    <asp:Label ID="lbMessage" runat="server" Text=""></asp:Label>
 </asp:Content>

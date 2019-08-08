@@ -11,7 +11,7 @@ namespace Todolist
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 Refresh();
             }
@@ -39,6 +39,26 @@ namespace Todolist
                 db.SaveChanges();
             }
             Refresh();
+        }
+
+        protected void rptList_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "Delete" && e.CommandArgument.ToString() != "")
+            {
+                using (var db = new Entities())
+                {
+                    int id;
+                    if(int.TryParse(e.CommandArgument.ToString(), out id)) {
+                        var task = db.tblTasks.FirstOrDefault(o => o.ID == id);
+                        task.RecordStatus = Const.Inactive;
+                        db.SaveChanges();
+                        Refresh();
+                    }
+                    else {
+                        lbMessage.Text = "Can not find the task with ID: " + e.CommandArgument.ToString();
+                    }
+                }
+            }
         }
     }
 }
