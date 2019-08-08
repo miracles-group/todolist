@@ -9,6 +9,9 @@
         <div>Due Date:</div>
         <asp:TextBox ID="txtDueDate" TextMode="Date" runat="server"></asp:TextBox>
         <br /><br />
+        <div>Description:</div>
+        <asp:TextBox ID="txtDescription" TextMode="MultiLine" Rows="5" runat="server"></asp:TextBox>
+        <br /><br />
         <asp:Button ID="btnCreate" runat="server" Text="Create" OnClick="btnCreate_Click" />
     </fieldset>
     <br />
@@ -22,9 +25,11 @@
                     <td>
                         <strong>Name</strong>
                     </td>
-                    
                     <td>
                         <strong>Due Date</strong>
+                    </td>
+                    <td>
+                        <strong>Description</strong>
                     </td>
                     <td></td>
                 </tr>
@@ -40,6 +45,9 @@
                 </td>
                 <td>
                     <%# ((DateTime)Eval("DueDate")).ToString("dd-MMM-yyyy") %>
+                </td>
+                <td>
+                    <%# Eval("Description") %>
                 </td>
                 <td>
                     <a href="/Detail.aspx?id=<%# Eval("ID") %>">Edit</a> | 

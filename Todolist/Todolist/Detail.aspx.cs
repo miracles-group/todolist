@@ -27,6 +27,7 @@ namespace Todolist
                 {
                     var item = db.tblTasks.FirstOrDefault(o => o.ID == id);
                     txtTaskName.Text = item.Title;
+                    txtDescription.Text = item.Description;
                     txtDueDate.Text = item.DueDate != null ? item.DueDate.Value.ToString("yyyy-MM-dd") : string.Empty;
                 }
                 else
@@ -52,6 +53,7 @@ namespace Todolist
                 {
                     var item = db.tblTasks.FirstOrDefault(o => o.ID == id);
                     item.Title = txtTaskName.Text;
+                    item.Description = txtDescription.Text;
                     item.DueDate = duedate;
                     db.SaveChanges();
                     Response.Redirect("/");

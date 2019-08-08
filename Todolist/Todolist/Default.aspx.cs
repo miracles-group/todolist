@@ -40,6 +40,7 @@ namespace Todolist
                 db.tblTasks.Add(new tblTask
                 {
                     Title = txtTaskName.Text,
+                    Description = txtDescription.Text,
                     DueDate = duedate,
                     RecordStatus = Const.Active
                 });

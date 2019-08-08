@@ -18,5 +18,6 @@ namespace Todolist
         public string Title { get; set; }
         public Nullable<int> RecordStatus { get; set; }
         public Nullable<System.DateTime> DueDate { get; set; }
+        public string Description { get; set; }
     }
 }
