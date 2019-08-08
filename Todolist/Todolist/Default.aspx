@@ -31,6 +31,7 @@
                     <%# Eval("Title") %>
                 </td>
                 <td>
+                    <a href="/Detail.aspx?id=<%# Eval("ID") %>">Edit</a> | 
                     <asp:LinkButton ID="lbtnDelete" CommandName="Delete" OnClientClick="javascript:if(!confirm('Delete this information? this will delete permanently'))return false;" CommandArgument='<%#Eval("ID") %>' runat="server">Delete</asp:LinkButton>
 
                 </td>
