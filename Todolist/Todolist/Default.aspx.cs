@@ -13,13 +13,32 @@ namespace Todolist
         {
             if(!IsPostBack)
             {
-                using(var db = new Entities())
-                {
-                    var list = db.tblTasks.Where(o => o.RecordStatus == Const.Active).ToList();
-                    rptList.DataSource = list;
-                    rptList.DataBind();
-                }
+                Refresh();
             }
+        }
+
+        public void Refresh()
+        {
+            using (var db = new Entities())
+            {
+                var list = db.tblTasks.Where(o => o.RecordStatus == Const.Active).ToList();
+                rptList.DataSource = list;
+                rptList.DataBind();
+            }
+        }
+
+        protected void btnCreate_Click(object sender, EventArgs e)
+        {
+            using (var db = new Entities())
+            {
+                db.tblTasks.Add(new tblTask
+                {
+                    Title = txtTaskName.Text,
+                    RecordStatus = Const.Active
+                });
+                db.SaveChanges();
+            }
+            Refresh();
         }
     }
 }
