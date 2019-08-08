@@ -11,7 +11,15 @@ namespace Todolist
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(!IsPostBack)
+            {
+                using(var db = new Entities())
+                {
+                    var list = db.tblTasks.Where(o => o.RecordStatus == Const.Active).ToList();
+                    rptList.DataSource = list;
+                    rptList.DataBind();
+                }
+            }
         }
     }
 }
